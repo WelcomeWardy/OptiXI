@@ -1911,8 +1911,8 @@ class Model:
             else:
                 team_df = df[df["Team"] == team].reset_index(drop=True)
                 _,new_team_df,_,goat = self.injury_replacement(team,team_df,injury_enabled,self.present_df,players)
-                for i in goat:
-                    result.append(i)
+                #for i in goat:
+                #    result.append(i)
                 print(f"\n--- Best XI for {team} ---")
                 team_df = new_team_df
                 self.clear_all_caches()
