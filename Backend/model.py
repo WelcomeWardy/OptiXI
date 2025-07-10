@@ -5,6 +5,7 @@ import functools
 import hashlib
 import pickle
 import logging
+import google.generativeai as genai
 
 class Model:
 
@@ -12,27 +13,29 @@ class Model:
         self.result = []
         self.df = pd.read_csv(r"Datasets\18-11_FINAL_DATASET_WITH_STYLES_BOOSTED.csv")
         self.present_df = self.df[(self.df["Ending Year"] == "Present") & (self.df["Current Season"] == 0)]
+        genai.configure(api_key="AIzaSyDPzbU5OKeZghLcANqIYoEV_7qHzkbBinM")
+        self.models = genai.GenerativeModel(model_name="gemma-3n-e4b-it")
         try:
             self.batting_ground_df = pd.read_csv(r"Datasets\batting_stats_by_ground_filtered.csv")
             self.bowling_ground_df = pd.read_csv(r"Datasets\bowling_stats_by_ground_filtered.csv")
-            self.result.append("Ground-specific performance data loaded successfully")
+            print("Ground-specific performance data loaded successfully")
         except FileNotFoundError as e:
-            self.result.append(f"Warning: {e}. Proceeding without ground-specific data.")
+            print(f"Warning: {e}. Proceeding without ground-specific data.")
             self.batting_ground_df = pd.DataFrame()
             self.bowling_ground_df = pd.DataFrame()
         if not self.batting_ground_df.empty:
-            self.result.append("Batting Ground Score Stats:")
-            self.result.append(f"Min: {self.batting_ground_df['Batting_Score'].min()}")
-            self.result.append(f"Max: {self.batting_ground_df['Batting_Score'].max()}")
-            self.result.append(f"Mean: {self.batting_ground_df['Batting_Score'].mean():.2f}")
-            self.result.append(f"Median: {self.batting_ground_df['Batting_Score'].median():.2f}")
+            print("Batting Ground Score Stats:")
+            print(f"Min: {self.batting_ground_df['Batting_Score'].min()}")
+            print(f"Max: {self.batting_ground_df['Batting_Score'].max()}")
+            print(f"Mean: {self.batting_ground_df['Batting_Score'].mean():.2f}")
+            print(f"Median: {self.batting_ground_df['Batting_Score'].median():.2f}")
 
         if not self.bowling_ground_df.empty:
-            self.result.append("Bowling Ground Score Stats:")
-            self.result.append(f"Min: {self.bowling_ground_df['BowlingScore'].min()}")
-            self.result.append(f"Max: {self.bowling_ground_df['BowlingScore'].max()}")
-            self.result.append(f"Mean: {self.bowling_ground_df['BowlingScore'].mean():.2f}")
-            self.result.append(f"Median: {self.bowling_ground_df['BowlingScore'].median():.2f}")
+            print("Bowling Ground Score Stats:")
+            print(f"Min: {self.bowling_ground_df['BowlingScore'].min()}")
+            print(f"Max: {self.bowling_ground_df['BowlingScore'].max()}")
+            print(f"Mean: {self.bowling_ground_df['BowlingScore'].mean():.2f}")
+            print(f"Median: {self.bowling_ground_df['BowlingScore'].median():.2f}")
         self.TEAM_HOME_GROUNDS = {
             "CSK": "MA Chidambaram Stadium ",
             "MI": "Wankhede Stadium ",
@@ -1565,7 +1568,7 @@ class Model:
             result.append("NOT CHECKED FOR REPLACEMENT")
         if (replaced):
             result.append("NEW REPLACED TEAM IF INJURIES\n\n\n\n ")
-        result.append(f"\n--- Best XI for {team} ---")
+        print(f"\n--- Best XI for {team} ---")
         self.clear_all_caches()
         if len(new_team_df) < 12:
             result.append(f"Not enough players to generate XI. Team has only {len(team_df)} players.")
@@ -1617,7 +1620,7 @@ class Model:
 
         # Final team display
         final_players = new_team_df.iloc[best_indices]
-        result.append("\n--- Final Team ---")
+        print("\n--- Final Team ---")
         selected_df = final_players[["Name", "Player Role", "Batting Style", "Bowling Style", "Overseas",
                              "Overall Batting (Weighted)", "Overall Bowling (Weighted)"]]
         result.append("Name | Player Role | Batting Style | Bowling Style| Overseas | Batting Score| Bowling Score")
@@ -1644,7 +1647,7 @@ class Model:
                 boost_info.append(f"Bowling: {bowling_boost:.3f}x")
 
             if boost_info:
-                result.append(f"{player_name}: {', '.join(boost_info)}")
+                print(f"{player_name}: {', '.join(boost_info)}")
 
         # FIXED: Verify no duplicates
         if len(set(best_indices)) != len(best_indices):
@@ -1668,8 +1671,8 @@ class Model:
         testing = self.dls_mode_adjustment(best_indices1,team_df1,team)
         print(testing[0])
         print("\n" + "1" if testing[1] else "0" + "\n")
-        result.append(f"\n--- Best XI for {team} ---")
-        team_df = self.df[self.df["Team"] == team].reset_index(drop=True)
+        print(f"\n--- Best XI for {team} ---")
+        team_df = team_df1
         self.clear_all_caches()
         if len(team_df) < 12:
             result.append(f"Not enough players to generate XI. Team has only {len(team_df)} players.")
@@ -1722,7 +1725,7 @@ class Model:
 
         # Final team display
         final_players = team_df.iloc[best_indices]
-        result.append("\n--- Final Team ---")
+        print("\n--- Final Team ---")
         selected_df = final_players[["Name", "Player Role", "Batting Style", "Bowling Style", "Overseas",
                 "Overall Batting (Weighted)", "Overall Bowling (Weighted)"]]
         result.append("Name | Player Role | Batting Style | Bowling Style| Overseas | Batting Score| Bowling Score")
@@ -1749,7 +1752,7 @@ class Model:
                 boost_info.append(f"Bowling: {bowling_boost:.3f}x")
 
             if boost_info:
-                result.append(f"{player_name}: {', '.join(boost_info)}")
+                print(f"{player_name}: {', '.join(boost_info)}")
 
         # FIXED: Verify no duplicates
         if len(set(best_indices)) != len(best_indices):
@@ -1764,7 +1767,7 @@ class Model:
             result.append(i)
         for team in teams:
             if not injury_enabled and not dls_enabled:
-                result.append(f"\n--- Best XI for {team} ---")
+                print(f"\n--- Best XI for {team} ---")
                 team_df = df[df["Team"] == team].reset_index(drop=True)
 
                 self.clear_all_caches()
@@ -1819,7 +1822,7 @@ class Model:
 
                 # Final team display
                 final_players = team_df.iloc[best_indices]
-                result.append("\n--- Final Team ---")
+                print("\n--- Final Team ---")
                 selected_df = final_players[["Name", "Player Role", "Batting Style", "Bowling Style", "Overseas",
                             "Overall Batting (Weighted)", "Overall Bowling (Weighted)"]]
                 result.append("Name | Player Role | Batting Style | Bowling Style| Overseas | Batting Score| Bowling Score")
@@ -1846,7 +1849,7 @@ class Model:
                         boost_info.append(f"Bowling: {bowling_boost:.3f}x")
 
                     if boost_info:
-                        result.append(f"{player_name}: {', '.join(boost_info)}")
+                        print(f"{player_name}: {', '.join(boost_info)}")
 
                 # FIXED: Verify no duplicates
                 if len(set(best_indices)) != len(best_indices):
@@ -1857,7 +1860,7 @@ class Model:
                 team_df = df[df["Team"] == team].reset_index(drop=True)
                 result = self.injury_prediction(team,team_df,injury_enabled,ground_team,players)
             elif dls_enabled and not injury_enabled:
-                result.append(f"\n--- Best XI for {team} ---")
+                print(f"\n--- Best XI for {team} ---")
                 team_df = df[df["Team"] == team].reset_index(drop=True)
                 self.clear_all_caches()
                 if len(team_df) < 12:
@@ -1913,7 +1916,7 @@ class Model:
                 _,new_team_df,_,goat = self.injury_replacement(team,team_df,injury_enabled,self.present_df,players)
                 for i in goat:
                     result.append(i)
-                result.append(f"\n--- Best XI for {team} ---")
+                print(f"\n--- Best XI for {team} ---")
                 team_df = new_team_df
                 self.clear_all_caches()
                 if len(team_df) < 12:
@@ -1975,7 +1978,7 @@ class Model:
         for team in self.teams:
             if(team_name == team):
                 if not injury_enabled and not dls_enabled:
-                    result.append(f"\n--- Best XI for {team} ---")
+                    print(f"\n--- Best XI for {team} ---")
                     team_df = self.df[self.df["Team"] == team].reset_index(drop=True)
 
                     self.clear_all_caches()
@@ -2030,10 +2033,9 @@ class Model:
 
                     # Final team display
                     final_players = team_df.iloc[best_indices]
-                    result.append("\n--- Final Team ---")
-                    selected_df = final_players[["Name", "Player Role", "Batting Style", "Bowling Style", "Overseas",
-                            "Overall Batting (Weighted)", "Overall Bowling (Weighted)"]]
-                    result.append("Name | Player Role | Batting Style | Bowling Style| Overseas | Batting Score| Bowling Score")
+                    print("\n--- Final Team ---")
+                    selected_df = final_players[["Name", "Player Role"]]
+                    result.append("Name | Player Role")
                     for _, row in selected_df.iterrows():
                         result.append(' | '.join(str(x) for x in row))
                     result.append(
@@ -2057,7 +2059,7 @@ class Model:
                             boost_info.append(f"Bowling: {bowling_boost:.3f}x")
 
                         if boost_info:
-                            result.append(f"{player_name}: {', '.join(boost_info)}")
+                            print(f"{player_name}: {', '.join(boost_info)}")
 
                     # FIXED: Verify no duplicates
                     if len(set(best_indices)) != len(best_indices):
@@ -2069,7 +2071,7 @@ class Model:
                     result = self.injury_prediction(team,team_df,injury_enabled,team,players)
                 elif dls_enabled and not injury_enabled:
                     print("DLSSSSS")
-                    result.append(f"\n--- Best XI for {team} ---")
+                    print(f"\n--- Best XI for {team} ---")
                     team_df = self.df[self.df["Team"] == team].reset_index(drop=True)
                     self.clear_all_caches()
                     if len(team_df) < 12:
@@ -2125,7 +2127,7 @@ class Model:
                     _,new_team_df,_,goat = self.injury_replacement(team,team_df,injury_enabled,self.present_df,players)
                     for i in goat:
                         result.append(i)
-                    result.append(f"\n--- Best XI for {team} ---")
+                    print(f"\n--- Best XI for {team} ---")
                     team_df = new_team_df
                     self.clear_all_caches()
                     if len(team_df) < 12:
@@ -2182,11 +2184,6 @@ class Model:
                 print("No team like " + team_name)
         return result
     
-    def ai_prediction():
-        pass
-'''
-model = Model()
-result = model.predict_team_mode(False,"LSG ")
-for i in result:
-    print(i)
-'''
+    def ai_prediction(self, prompt):
+        response = self.models.generate_content(prompt)
+        return (response.text)

@@ -869,15 +869,6 @@ const Custom = () => {
     }
   };
 
-
-  // Model generation function
-  async function generateModel({ players, team, modes }: { players: string[]; team: string; modes: string[] }) {
-    // Simulate async work
-    await new Promise((res) => setTimeout(res, 600));
-    // Replace with your actual model logic
-    return { players, team, modes };
-  }
-
   // Dropdown close on outside click
   useEffect(() => {
     if (!dropdownOpen) return;

@@ -1,4 +1,3 @@
-
 import './AboutUs.css';
 import './AboutUs.fadein.css';
 
@@ -19,25 +18,33 @@ const AboutUs = () => {
                     <div className="aboutus-member-row fade-in-card" style={{ animationDelay: '0.5s', marginBottom: '0.7rem' }}>
                         <img src="/member1.jpg" alt="Member 1" className="aboutus-member-img" />
                         <div className="aboutus-member-info">
-                            <div className="aboutus-member-name">Member 1</div>
+                            <div className="aboutus-member-name">Madhav Koduvayur</div>
                             <div className="aboutus-member-role">Developer</div>
                             <div className="aboutus-member-links">
-                                <a href="#" className="aboutus-link linkedin" title="LinkedIn" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-linkedin"></i></a>
-                                <a href="#" className="aboutus-link github" title="GitHub" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-github"></i></a>
+                                <a href="https://www.linkedin.com/in/madhav-koduvayur-9464b8293/" className="aboutus-link linkedin" title="LinkedIn" target="_blank" rel="noopener noreferrer">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" style={{ width: '1.5em', height: '1.5em', verticalAlign: 'middle' }} />
+                                </a>
+                                <a href="https://github.com/WelcomeWardy" className="aboutus-link github" title="GitHub" target="_blank" rel="noopener noreferrer">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" style={{ width: '1.5em', height: '1.5em', verticalAlign: 'middle' }} />
+                                </a>
                             </div>
-                            <div className="aboutus-member-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nisi eu consectetur.</div>
+                            {/* Member description removed as requested */}
                         </div>
                     </div>
                     <div className="aboutus-member-row fade-in-card" style={{ animationDelay: '0.7s', marginBottom: '0.2rem' }}>
                         <img src="/public/member2.jpg" alt="Member 2" className="aboutus-member-img" />
                         <div className="aboutus-member-info">
-                            <div className="aboutus-member-name">Member 2</div>
+                            <div className="aboutus-member-name">Rahul Ramesh</div>
                             <div className="aboutus-member-role">Developer</div>
                             <div className="aboutus-member-links">
-                                <a href="#" className="aboutus-link linkedin" title="LinkedIn" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-linkedin"></i></a>
-                                <a href="#" className="aboutus-link github" title="GitHub" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-github"></i></a>
+                                <a href="https://www.linkedin.com/in/rahul-ramesh96" className="aboutus-link linkedin" title="LinkedIn" target="_blank" rel="noopener noreferrer">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" style={{ width: '1.5em', height: '1.5em', verticalAlign: 'middle' }} />
+                                </a>
+                                <a href="https://github.com/rahul225-7" className="aboutus-link github" title="GitHub" target="_blank" rel="noopener noreferrer">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" style={{ width: '1.5em', height: '1.5em', verticalAlign: 'middle' }} />
+                                </a>
                             </div>
-                            <div className="aboutus-member-desc">Curabitur blandit tempus porttitor. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</div>
+                            {/* Member description removed as requested */}
                         </div>
                     </div>
                 </div>
