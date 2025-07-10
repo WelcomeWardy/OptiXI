@@ -823,6 +823,10 @@ const Custom = () => {
   const navigate = useNavigate();
   const [error, setError] = useState<string | null>(null);
 
+  const minPlayers = 18;
+  const maxPlayers = 25;
+  const isValidSelection = selectedPlayers.length >= minPlayers && selectedPlayers.length <= maxPlayers;
+
   const filteredPlayers = search
     ? MOCK_PLAYERS.filter((p) => p.toLowerCase().includes(search.toLowerCase()) && !selectedPlayers.includes(p))
     : [];
@@ -831,6 +835,13 @@ const Custom = () => {
     if (selectedPlayers.includes(player)) {
       setError('Player already selected!');
       setTimeout(() => setError(null), 1200);
+      return;
+    }
+    if (selectedPlayers.length >= maxPlayers) {
+      setError(
+        <span style='color:#d32f2f'>You can select a maximum of ${maxPlayers} players.</span>
+      );
+      setTimeout(() => setError(null), 1500);
       return;
     }
     setSelectedPlayers((prev) => [...prev, player]);
@@ -1210,6 +1221,12 @@ const Custom = () => {
               </div>
             </div>
           </div>
+          {/* Player selection constraint warning */}
+          {!isValidSelection && (
+            <div style={{ color: '#d32f2f', fontWeight: 500, fontSize: '1.08rem', marginTop: 8, textAlign: 'center' }}>
+              Please select between {minPlayers} and {maxPlayers} players to proceed.
+            </div>
+          )}
         </div>
       </div>
     </div>
