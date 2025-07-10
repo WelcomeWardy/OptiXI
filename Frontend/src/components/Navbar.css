@@ -1,0 +1,146 @@
+/* Left align nav links */
+.nav-left {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    gap: 1.2rem;
+    margin-left: 3.5rem;
+    /* Adds space from brand */
+    max-width: 40vw;
+    /* Prevents from reaching center */
+}
+
+.nav-left .ipl-nav-link:first-child {
+    margin-left: 2.5rem;
+}
+
+.nav-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex: 1;
+    padding-right: 1.5rem;
+}
+
+/* Adjust spacing for nav links */
+.ipl-nav-links .ipl-nav-link {
+    margin-left: 0;
+    margin-right: 2rem;
+}
+
+/* Remove extra margin from last nav link in left/right */
+.nav-left .ipl-nav-link:last-child,
+.nav-right .ipl-nav-link:last-child {
+    margin-right: 0;
+}
+
+/* Right align nav links */
+.nav-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex: 1;
+}
+
+/* Ensure nav-center takes only needed space and doesn't push nav-right */
+.nav-center {
+    flex: 0 1 auto;
+}
+
+/* IPL Gradient Navbar - Cleaned and Structured */
+@import url('../assets/ipl-theme.css');
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.1rem 2.5rem 1.1rem 2.5rem;
+    background: var(--ipl-blue-accent);
+    border-bottom: none;
+    box-shadow: var(--ipl-shadow);
+    /* animation: navbar-fade 1.2s cubic-bezier(0.4, 0, 0.2, 1); */
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+@keyframes navbar-fade {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.nav-brand a {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--ipl-gold);
+    letter-spacing: 2px;
+    text-shadow: 0 2px 12px var(--ipl-blue-accent), 0 1px 0 var(--ipl-white);
+    text-decoration: none;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+@keyframes brand-pop {
+    0% {
+        transform: scale(0.8) rotate(-8deg);
+        opacity: 0;
+    }
+
+    60% {
+        transform: scale(1.1) rotate(2deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1) rotate(0);
+    }
+}
+
+/* Center nav links horizontally */
+.nav-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.nav-links a {
+    padding: 0.5rem 1.5rem;
+    border-radius: 18px;
+    font-size: 1.1rem;
+    color: var(--ipl-white);
+    font-weight: 700;
+    background: none;
+    border: none;
+    margin-left: 1rem;
+    transition: background 0.22s, color 0.22s, box-shadow 0.22s, transform 0.18s;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+@keyframes link-fade {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.nav-links a:hover {
+    background: var(--ipl-gold);
+    color: var(--ipl-blue-accent);
+    box-shadow: 0 6px 24px 0 rgba(255, 215, 0, 0.18);
+    transform: scale(1.08) translateY(-2px);
+}

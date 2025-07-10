@@ -1,0 +1,63 @@
+:root {
+    --ipl-blue: #15306b;
+    --ipl-blue-accent: #1756a9;
+    --ipl-gold: #F4C430;
+    --ipl-gold-accent: #FFCC33;
+    --ipl-white: #f5f5f5;
+    --ipl-dark: #101828;
+    --ipl-grey: #F8F9FA;
+    --ipl-shadow: 0 4px 16px 0 rgba(30, 58, 138, 0.10);
+    --ipl-nav-bg: #0A1F44;
+    --ipl-card-bg: #F8F9FA;
+    --ipl-card-bg-dark: #2C2F33;
+    --ipl-offwhite: #F5F5F5;
+    --ipl-lightgray: #CCCCCC;
+}
+
+body {
+    background: linear-gradient(120deg, var(--ipl-white) 0%, var(--ipl-grey) 100%);
+    color: var(--ipl-dark);
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.ipl-btn {
+    background: linear-gradient(90deg, var(--ipl-blue) 60%, var(--ipl-gold-accent) 100%);
+    color: var(--ipl-white);
+    border: none;
+    border-radius: 8px;
+    padding: 0.6em 2em;
+    font-size: 1.08rem;
+    font-weight: 600;
+    box-shadow: var(--ipl-shadow);
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: background 0.25s, color 0.18s, box-shadow 0.18s, transform 0.18s;
+}
+
+.ipl-btn:hover {
+    background: linear-gradient(90deg, var(--ipl-gold) 60%, var(--ipl-blue-accent) 100%);
+    color: var(--ipl-dark);
+    box-shadow: 0 6px 24px 0 rgba(244, 196, 48, 0.18);
+    transform: translateY(-2px) scale(1.04);
+}
+
+.ipl-btn {
+    background: linear-gradient(90deg, var(--ipl-blue) 60%, var(--ipl-gold-accent) 100%);
+    color: var(--ipl-white);
+    border: none;
+    border-radius: 8px;
+    padding: 0.6em 2em;
+    font-size: 1.08rem;
+    font-weight: 600;
+    box-shadow: var(--ipl-shadow);
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: background 0.25s, color 0.18s, box-shadow 0.18s, transform 0.18s;
+}
+
+.ipl-btn:hover {
+    background: linear-gradient(90deg, var(--ipl-gold) 60%, var(--ipl-blue-accent) 100%);
+    color: var(--ipl-dark);
+    box-shadow: 0 6px 24px 0 rgba(244, 196, 48, 0.18);
+    transform: translateY(-2px) scale(1.04);
+}
