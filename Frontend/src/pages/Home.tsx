@@ -13,7 +13,7 @@ const Home = () => {
                 <div className="ball ball5"></div>
             </div>
             <div className="hero-text">
-                <h1>Welcome to 18 to 11: Your AI-Powered IPL XI Selector</h1>
+                <h1>Welcome to OptiXI: Your AI-Powered IPL Best XII Generator</h1>
                 <div className="hero-subheading" style={{ fontFamily: 'Inter, Poppins, Montserrat, Arial, sans-serif' }}>Build your dream IPL squad with advanced AI, real stats, and cricketing intuition.</div>
                 <div className="hero-features-grid fade-in">
                     <div className="hero-feature-card fade-in-card" style={{ animationDelay: '0.1s' }}>
@@ -48,3 +48,4 @@ const Home = () => {
 }
 
 export default Home;
+
