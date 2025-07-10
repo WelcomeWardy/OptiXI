@@ -1,0 +1,564 @@
+/* Make all main headings in About page yellow */
+.about-main-card h1,
+.about-main-card h2,
+.about-main-card h3,
+.about-title,
+.about-howitworks-title {
+    color: #ffd700 !important;
+}
+
+.about-main-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem 2rem 2.5rem 2rem;
+    background: linear-gradient(120deg, #1756a9 80%, #1a2a5c 100%);
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 32px 0 rgba(0, 0, 0, 0.13), 0 1.5px 0 0 #ffd70022;
+    max-width: 800px;
+    margin: 3rem auto 2.5rem auto;
+    border: 1.5px solid #1a2a5c;
+}
+
+.about-title {
+    text-align: left;
+    font-weight: 700;
+    font-size: 2.2rem;
+    margin-bottom: 0.7rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+    padding-left: 2rem;
+}
+
+.about-content {
+    text-align: left;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.7rem;
+    padding-left: 0;
+    padding-right: 0;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.about-content p {
+    margin: 0 0 0.7rem 0;
+}
+
+.about-cta-buttons {
+    margin-top: 2.2rem;
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 0;
+    flex-wrap: wrap;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Alignment and spacing for About page */
+.about-main-card {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 2.5rem 2rem 2rem 2rem;
+    background: #1756a9;
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.10);
+    max-width: 700px;
+    margin: 2rem auto;
+}
+
+.about-title {
+    text-align: left;
+    font-weight: 700;
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.about-subheading {
+    text-align: left;
+    font-weight: 500;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.about-desc {
+    text-align: left;
+    margin-bottom: 1.2rem;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.about-howitworks {
+    width: 100%;
+}
+
+.about-howitworks-title {
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: 1.15rem;
+}
+
+.about-howitworks-section {
+    text-align: left;
+}
+
+.about-howitworks-label {
+    margin-bottom: 0.3rem;
+}
+
+.about-cta-buttons {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+}
+
+/* --- About Feature Cards --- */
+
+.about-subheading {
+    font-size: 1.25rem;
+    color: #e0e6ff;
+    margin-bottom: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-align: center;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.about-desc {
+    font-size: 1.05rem;
+    color: #e0e6ff;
+    margin-bottom: 1.7rem;
+    text-align: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 400;
+}
+
+.about-howitworks-title {
+    color:  #ffd700 ;
+    font-family: inherit;
+    letter-spacing: 0.2px;
+}
+
+.about-howitworks-section {
+    margin-bottom: 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 700px;
+}
+
+.about-howitworks-label {
+    color: #e0e6ff;
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.about-howitworks-desc {
+    color: #b6c3e6;
+    font-weight: 400;
+}
+
+.about-features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2.2rem;
+    width: 100%;
+    max-width: 900px;
+    z-index: 2;
+}
+
+.about-feature-card {
+    background: rgba(30, 34, 53, 0.38);
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 24px 0 rgba(160, 132, 250, 0.13);
+    border: 1.5px solid rgba(160, 132, 250, 0.13);
+    padding: 1.5rem 1.2rem 1.2rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.22s, box-shadow 0.22s, background 0.22s;
+    cursor: pointer;
+    min-height: 180px;
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+    animation: about-card-fadein 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.about-feature-card:hover {
+    transform: translateY(-6px) scale(1.04) rotate(-1deg);
+    box-shadow: 0 8px 32px 0 #a084fa44, 0 2px 24px 0 #ffd70033;
+    background: rgba(160, 132, 250, 0.13);
+}
+
+.about-feature-icon {
+    font-size: 2.2rem;
+    margin-bottom: 0.7rem;
+    filter: drop-shadow(0 2px 8px #a084fa88);
+}
+
+.about-feature-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffd700;
+    margin-bottom: 0.3rem;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+.about-feature-desc {
+    font-size: 1rem;
+    color: #e0e6ff;
+    text-align: center;
+    font-weight: 400;
+}
+
+@keyframes about-card-fadein {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.about-cta-buttons {
+    display: flex;
+    gap: 1.2rem;
+    justify-content: center;
+    margin-bottom: 2.2rem;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.about-btn {
+    padding: 1rem 2.2rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 2rem;
+    border: 2px solid #fff;
+    outline: none;
+    cursor: pointer;
+    transition: background 0.22s, color 0.18s, box-shadow 0.18s, transform 0.18s, border 0.18s;
+    box-shadow: 0 2px 16px 0 rgba(23, 86, 169, 0.10);
+    text-decoration: none;
+    color: #fff;
+    background: #1756a9;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.about-btn:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, #ffd700 0%, #1756a9 100%);
+    opacity: 0;
+    transition: opacity 0.22s;
+    z-index: -1;
+    border-radius: 2rem;
+}
+
+.about-btn:hover,
+.about-btn:focus {
+    background: #fff;
+    color: #1756a9;
+    border: 2px solid #1756a9;
+    box-shadow: 0 4px 24px 0 #1756a944;
+    transform: translateY(-2px) scale(1.04);
+}
+
+.about-btn:hover:after,
+.about-btn:focus:after {
+    opacity: 0.18;
+}
+
+.about-btn-primary:hover,
+.about-btn-primary:focus,
+.about-btn-secondary:hover,
+.about-btn-secondary:focus {
+    background: #fff;
+    color: #1756a9;
+    border: 2px solid #1756a9;
+    box-shadow: 0 4px 24px 0 #1756a944;
+    transform: translateY(-2px) scale(1.04);
+}
+
+
+
+
+
+.about-slogan {
+    font-size: 1.2rem;
+    color: #ffd700;
+    font-weight: 700;
+    margin-top: 1.2rem;
+    letter-spacing: 1.5px;
+    text-shadow: 0 2px 16px #a084fa, 0 1px 0 #23243a;
+    text-align: center;
+}
+
+@media (max-width: 700px) {
+    .about-features-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+
+    .about-main-card h1 {
+        font-size: 2rem;
+    }
+}
+
+.about.home {
+    min-height: 100vh;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    width: 100vw;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.about-main-card {
+    margin: 0 auto;
+    max-width: 900px;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 2.5rem 1.2rem 2rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.about-title {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    font-size: 2.4rem;
+    font-weight: 800;
+    margin-bottom: 1.1rem;
+}
+
+.about-howitworks-title {
+    justify-content: center !important;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.about-howitworks-section {
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 700px;
+}
+
+.about-cta-buttons {
+    display: flex;
+    gap: 1.2rem;
+    justify-content: center;
+    margin-bottom: 2.2rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+/* Card-like container for main content */
+.about-main-card {
+    background: var(--ipl-blue);
+    border-radius: 1.5rem;
+    box-shadow: 0 8px 32px 0 rgba(30, 58, 138, 0.18);
+    padding: 2.5rem 2rem;
+    margin: 3rem auto 2rem auto;
+    max-width: 900px;
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.about-main-card h1 {
+    color: var(--ipl-white);
+    font-size: 2.7rem;
+    font-weight: 900;
+    margin-bottom: 1.2rem;
+    letter-spacing: 1px;
+    text-align: left;
+}
+
+/* Content inside the card */
+.about-main-card .about-content {
+    line-height: 1.7;
+    color: var(--ipl-white);
+    font-size: 1.18rem;
+    text-align: left;
+    margin-bottom: 0.5rem;
+}
+
+.about-main-card .about-content p {
+    margin-bottom: 1.5rem;
+    color: var(--ipl-white);
+}
+
+.about-navbar {
+    position: fixed;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(30, 34, 53, 0.85);
+    border-radius: 2rem;
+    padding: 0.7rem 2.8rem;
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+    box-shadow: 0 4px 32px 0 rgba(30, 58, 138, 0.18);
+    z-index: 10;
+    backdrop-filter: blur(8px) saturate(1.2);
+    border: 1.5px solid rgba(160, 132, 250, 0.18);
+    animation: navbarFadeIn 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes navbarFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-40px) translateX(-50%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) translateX(-50%);
+    }
+}
+
+.about-navbar a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.13rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 1.2rem;
+    border-radius: 1.2rem;
+    transition:
+        color 0.2s,
+        background 0.25s,
+        box-shadow 0.25s,
+        transform 0.18s;
+    position: relative;
+    overflow: hidden;
+}
+
+.about-navbar a.active,
+.about-navbar a:focus {
+    background: linear-gradient(90deg, #a084fa 0%, #6f61e8 100%);
+    color: #fff;
+    box-shadow: 0 2px 16px 0 rgba(160, 132, 250, 0.18);
+    transform: scale(1.07);
+}
+
+.about-navbar a:hover:not(.active) {
+    background: rgba(160, 132, 250, 0.13);
+    color: #a084fa;
+    box-shadow: 0 2px 8px 0 rgba(160, 132, 250, 0.10);
+    transform: translateY(-2px) scale(1.04);
+}
+
+.about-navbar a .nav-icon {
+    font-size: 1.25rem;
+    margin-right: 0.3rem;
+    filter: drop-shadow(0 1px 2px #6f61e8aa);
+    transition: filter 0.2s;
+}
+
+.about-navbar a.active .nav-icon,
+.about-navbar a:focus .nav-icon {
+    filter: drop-shadow(0 2px 4px #a084fa);
+}
+
+.build-phrase {
+    margin: 2rem 0 1.5rem 0;
+    font-size: 1.25rem;
+    color: cyan;
+    text-align: center;
+    width: 100%;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    line-height: 1.5;
+    word-break: break-word;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+    margin-top: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.button-container .mode-button {
+    border: 1.5px solid rgba(160, 132, 250, 0.22);
+    background: rgba(30, 34, 53, 0.35);
+    backdrop-filter: blur(8px) saturate(1.2);
+    border-radius: 1.2rem;
+    color: var(--ipl-white);
+    box-shadow: 0 2px 16px 0 rgba(160, 132, 250, 0.10);
+    transition: background 0.25s, border 0.25s, box-shadow 0.25s, color 0.18s;
+}
+
+.button-container .mode-button:hover,
+.button-container .mode-button:focus {
+    background: rgba(160, 132, 250, 0.13);
+    border: 1.5px solid rgba(160, 132, 250, 0.38);
+    color: #a084fa;
+    box-shadow: 0 4px 24px 0 rgba(160, 132, 250, 0.18);
+}
+
+@media (max-width: 700px) {
+    .about-navbar {
+        padding: 0.5rem 1.2rem;
+        gap: 1.2rem;
+        font-size: 0.98rem;
+    }
+
+    .about-navbar a {
+        padding: 0.3rem 0.7rem;
+        font-size: 1rem;
+    }
+}
