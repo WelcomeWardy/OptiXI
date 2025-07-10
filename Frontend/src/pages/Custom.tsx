@@ -1,4 +1,3 @@
-
 // Injury Optimization State
 // (must be inside the component)
 
@@ -1234,5 +1233,6 @@ const Custom = () => {
     </div>
   );
 };
+
 
 export default Custom;
