@@ -1,0 +1,233 @@
+/* Loader animation for loading text */
+.output-root .loading-text {
+    animation: pulse 1.5s infinite;
+    opacity: 0.7;
+    font-size: 1.08rem;
+    letter-spacing: 0.01em;
+    text-align: center;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.7;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.7;
+    }
+}
+
+/* Team accent: gold border and shadow for cards */
+.output-root .card-accent {
+    border: 2.5px solid gold !important;
+    box-shadow: 0 0 16px 0 rgba(255, 215, 0, 0.18), 0 8px 32px 0 rgba(31, 38, 135, 0.13);
+}
+
+/* Section subtitle styling */
+.output-root .section-subtitle {
+    font-size: 0.95rem;
+    color: #666;
+    margin-top: -0.7rem;
+    margin-bottom: 1.2rem;
+    text-align: center;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+}
+
+/* Player list formatting */
+.output-root .player-list {
+    list-style-type: decimal;
+    padding-left: 1.2rem;
+    margin: 0;
+    font-size: 1.08rem;
+    line-height: 1.7;
+    color: #111;
+    font-family: inherit;
+}
+
+/* Responsive card width for mobile */
+.output-root .selected-players-box,
+.output-root .right-col>.selected-players-box,
+.output-root .right-col>.visualization-card,
+.output-root .right-col>.elucidation-card {
+    max-width: 400px;
+    width: 90%;
+}
+
+@media (min-width: 900px) {
+
+    .output-root .selected-players-box,
+    .output-root .right-col>.selected-players-box,
+    .output-root .right-col>.visualization-card,
+    .output-root .right-col>.elucidation-card {
+        max-width: 480px;
+        width: 100%;
+    }
+
+    .output-root .right-col>.selected-players-box,
+    .output-root .right-col>.visualization-card,
+    .output-root .right-col>.elucidation-card {
+        max-width: 820px;
+    }
+}
+
+.output-root .grid {
+    display: grid !important;
+}
+
+.output-root .flex {
+    display: flex !important;
+}
+
+.output-root .flex-col {
+    flex-direction: column !important;
+}
+
+.output-root .gap-8 {
+    gap: 2rem !important;
+}
+
+
+
+
+/* Force two columns on desktop, 480px left, right fills remaining, center grid vertically */
+.output-root .md\:grid-cols-2 {
+    grid-template-columns: 480px 1fr !important;
+    min-height: 96vh;
+    align-items: start;
+    justify-items: center;
+    column-gap: 4.5rem;
+    padding: 3.2rem 3.2rem 3.2rem 3.2rem;
+}
+
+/* Make cards auto height, but add padding and margin for balance */
+.output-root .flex-col.gap-8>* {
+    min-height: unset;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+
+
+/* Selected Players card: align left, not stretched, add shadow and spacing */
+.output-root .selected-players-box {
+    max-width: 480px;
+    min-width: 340px;
+    margin-left: 0;
+    margin-right: auto;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.14);
+    border-radius: 2.1rem;
+    background: rgba(255, 255, 255, 0.97);
+    border: 2.5px solid #e3eafc;
+    padding: 2.8rem 2.8rem 2.8rem 2.8rem;
+}
+
+
+
+/* Visualization and Elucidation: center in right column, add max width, spacing, and visual polish */
+.output-root .right-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4.2rem;
+    width: 100%;
+    padding-top: 3.2rem;
+    padding-bottom: 3.2rem;
+}
+
+.output-root .right-col>.selected-players-box {
+    width: 100%;
+    max-width: 820px;
+    min-width: 340px;
+    margin-left: 0;
+    margin-right: 0;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.13);
+    border-radius: 2.1rem;
+    background: rgba(255, 255, 255, 0.985);
+    border: 2.5px solid #e3eafc;
+    padding: 3.2rem 3.2rem 3.2rem 3.2rem;
+}
+
+.output-root .right-col>.visualization-card,
+.output-root .right-col>.elucidation-card {
+    width: 100%;
+    max-width: 820px;
+    min-width: 340px;
+    margin-left: 0;
+    margin-right: 0;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.13);
+    border-radius: 2.1rem;
+    background: rgba(255, 255, 255, 0.985);
+    border: 2.5px solid #e3eafc;
+    padding: 3.2rem 3.2rem 3.2rem 3.2rem;
+}
+
+.output-root .selected-players-title {
+    font-size: 1.45rem;
+    letter-spacing: 0.02em;
+    margin-bottom: 1.7rem !important;
+}
+
+
+/* Add a little breathing room for the team info */
+.output-root .flex.flex-col.items-center.justify-center {
+    margin-bottom: 2.7rem;
+    margin-top: 1.2rem;
+}
+
+/* Team logo: reduce size and keep centered */
+.output-root .team-logo {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.1rem;
+    margin-top: 0.2rem;
+    border-radius: 1.1rem;
+    box-shadow: 0 2px 12px 0 rgba(31, 38, 135, 0.10);
+    background: #fff;
+}
+
+/* Responsive tweaks for mobile */
+@media (max-width: 900px) {
+    .output-root .md\:grid-cols-2 {
+        grid-template-columns: 1fr !important;
+        align-items: stretch;
+        justify-items: stretch;
+        padding: 0.5rem;
+    }
+
+    .output-root .selected-players-box,
+    .output-root .right-col>.selected-players-box,
+    .output-root .right-col>.visualization-card,
+    .output-root .right-col>.elucidation-card {
+        max-width: 99vw;
+        min-width: 0;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+    }
+
+    .output-root .right-col {
+        align-items: center;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .output-root .team-logo {
+        width: 38px;
+        height: 38px;
+        margin-bottom: 0.7rem;
+        margin-top: 0.1rem;
+    }
+}
