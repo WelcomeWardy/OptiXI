@@ -1562,12 +1562,12 @@ class Model:
         #           "Travis Head", "Pat Cummins", "Andre Russell", "Tilak Varma", "Virat Kohli", "Dewald Brevis",
         #           "Ravichandran Ashwin"]
         replaced, new_team_df, CheckForReplacement, goat = self.injury_replacement(team, team_df, injury_enabled,self.present_df, players)
-        for i in goat:
-            result.append(i)
+        #for i in goat:
+        #    result.append(i)
         if (not CheckForReplacement):
-            result.append("NOT CHECKED FOR REPLACEMENT")
+            print("NOT CHECKED FOR REPLACEMENT")
         if (replaced):
-            result.append("NEW REPLACED TEAM IF INJURIES\n\n\n\n ")
+            print("NEW REPLACED TEAM IF INJURIES\n\n\n\n ")
         print(f"\n--- Best XI for {team} ---")
         self.clear_all_caches()
         if len(new_team_df) < 12:
@@ -1621,9 +1621,8 @@ class Model:
         # Final team display
         final_players = new_team_df.iloc[best_indices]
         print("\n--- Final Team ---")
-        selected_df = final_players[["Name", "Player Role", "Batting Style", "Bowling Style", "Overseas",
-                             "Overall Batting (Weighted)", "Overall Bowling (Weighted)"]]
-        result.append("Name | Player Role | Batting Style | Bowling Style| Overseas | Batting Score| Bowling Score")
+        selected_df = final_players[["Name", "Player Role"]]
+        result.append("Name | Player Role")
         for _, row in selected_df.iterrows():
             result.append(' | '.join(str(x) for x in row))
         result.append(
@@ -1726,9 +1725,8 @@ class Model:
         # Final team display
         final_players = team_df.iloc[best_indices]
         print("\n--- Final Team ---")
-        selected_df = final_players[["Name", "Player Role", "Batting Style", "Bowling Style", "Overseas",
-                "Overall Batting (Weighted)", "Overall Bowling (Weighted)"]]
-        result.append("Name | Player Role | Batting Style | Bowling Style| Overseas | Batting Score| Bowling Score")
+        selected_df = final_players[["Name", "Player Role"]]
+        result.append("Name | Player Role")
         for _, row in selected_df.iterrows():
             result.append(' | '.join(str(x) for x in row))
         result.append(
@@ -1823,9 +1821,8 @@ class Model:
                 # Final team display
                 final_players = team_df.iloc[best_indices]
                 print("\n--- Final Team ---")
-                selected_df = final_players[["Name", "Player Role", "Batting Style", "Bowling Style", "Overseas",
-                            "Overall Batting (Weighted)", "Overall Bowling (Weighted)"]]
-                result.append("Name | Player Role | Batting Style | Bowling Style| Overseas | Batting Score| Bowling Score")
+                selected_df = final_players[["Name", "Player Role", ]]
+                result.append("Name | Player Role")
                 for _, row in selected_df.iterrows():
                     result.append(' | '.join(str(x) for x in row))
                 result.append(
@@ -2125,8 +2122,8 @@ class Model:
                 else:
                     team_df = self.df[self.df["Team"] == team].reset_index(drop=True)
                     _,new_team_df,_,goat = self.injury_replacement(team,team_df,injury_enabled,self.present_df,players)
-                    for i in goat:
-                        result.append(i)
+                    #for i in goat:
+                    #    result.append(i)
                     print(f"\n--- Best XI for {team} ---")
                     team_df = new_team_df
                     self.clear_all_caches()
