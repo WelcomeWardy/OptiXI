@@ -12,6 +12,7 @@ class Model:
     def __init__(self):
         self.result = []
         self.df = pd.read_csv(r"Datasets\18-11_FINAL_DATASET_WITH_STYLES_BOOSTED.csv")
+        self.dffull = self.df
         self.present_df = self.df[(self.df["Ending Year"] == "Present") & (self.df["Current Season"] == 0)]
         genai.configure(api_key="AIzaSyDPzbU5OKeZghLcANqIYoEV_7qHzkbBinM")
         self.models = genai.GenerativeModel(model_name="gemma-3n-e4b-it")
@@ -1654,7 +1655,7 @@ class Model:
         else:
             result.append("✓ All players are unique")
             
-        return result
+        return result,best_indices
 
     def get_team_players(self,teamName):
         df = self.df[self.df['Team'] == teamName]
@@ -1855,7 +1856,7 @@ class Model:
                     result.append("✓ All players are unique")
             elif injury_enabled and not dls_enabled:
                 team_df = df[df["Team"] == team].reset_index(drop=True)
-                result = self.injury_prediction(team,team_df,injury_enabled,ground_team,players)
+                result,best_indices = self.injury_prediction(team,team_df,injury_enabled,ground_team,players)
             elif dls_enabled and not injury_enabled:
                 print(f"\n--- Best XI for {team} ---")
                 team_df = df[df["Team"] == team].reset_index(drop=True)
@@ -1966,7 +1967,7 @@ class Model:
                 true = self.dls_injury_prediction(team,best_indices,team_df,True)
                 for i in true:
                     result.append(i)
-        return result
+        return result,best_indices,team_df
 
     def predict_team_mode(self,injury_enabled,team_name,dls_enabled,players=None):
         result = []
@@ -2065,7 +2066,7 @@ class Model:
                         result.append("✓ All players are unique")
                 elif injury_enabled and not dls_enabled:
                     team_df = self.df[self.df["Team"] == team].reset_index(drop=True)
-                    result = self.injury_prediction(team,team_df,injury_enabled,team,players)
+                    result,best_indices = self.injury_prediction(team,team_df,injury_enabled,team,players)
                 elif dls_enabled and not injury_enabled:
                     print("DLSSSSS")
                     print(f"\n--- Best XI for {team} ---")
@@ -2179,8 +2180,30 @@ class Model:
                         result.append(i)
             else:
                 print("No team like " + team_name)
-        return result
+        return result,best_indices,team_df
     
     def ai_prediction(self, prompt):
         response = self.models.generate_content(prompt)
         return (response.text)
+
+    def get_players_list(self,df,best_indices):
+        # Adjust column names as per your CSV
+        selected = df.iloc[best_indices]
+        selected = selected.replace({np.nan: None})
+        players = []
+        for _, row in selected.iterrows():
+            players.append({
+                "name": row["Name"],
+                "battingStyle": row.get("Batting Style"),
+                "bowlingStyle": row.get("Bowling Style"),
+                "battingScore": row.get("Overall Batting (Weighted)", 0),
+                "bowlingScore": row.get("Overall Bowling (Weighted)", 0)
+            })
+        print(players)
+        return players
+
+    def get_player(self,player_name):
+        # Adjust column names as per your CSV
+        player = self.dffull[self.dffull["Name"] == player_name].iloc[0]
+        player_str = f'{player["Name"]} | {player.get("Batting Style", "N/A")} | {player.get("Bowling Style", "N/A")} | {player.get("Overseas", False)} | {player.get("Overall Batting (Weighted)", 0)} | {player.get("Overall Bowling (Weighted)", 0)} | {player.get("Player Role", "Unknown")}'
+        return player_str

@@ -9,6 +9,8 @@ CORS(app)  # allow frontend (React) to communicate
 # In-memory store for the generated team
 generated_team = []
 selectedTeam = ""
+bestIndices = []
+team_df = pd.DataFrame()
 @app.route("/generateTeamMode", methods = ["POST"])
 def generating():
     data = request.get_json()
@@ -16,11 +18,12 @@ def generating():
     injured_players = data.get("injuredplayers", [])
     injury_enabled = data.get("injuryMode")
     dls_enabled = data.get("dlsmode")
-    global generated_team
-    generated_team = model.predict_team_mode(injury_enabled,team,dls_enabled,injured_players)
+    global generated_team,bestIndices,team_df
+    generated_team,bestIndices,team_df = model.predict_team_mode(injury_enabled,team,dls_enabled,injured_players)
     return jsonify({"status":"generated"})
 @app.route("/generate", methods=["POST"])
 def generate():
+
     data = request.get_json()
     selected_players = data.get("players", [])
     print("Recieved players: " + str(len(selected_players)))
@@ -34,9 +37,10 @@ def generate():
     isDls = ("DLS Mode" in modes)
     print(isDls)
     # 👇 Combine or process as needed
-    global generated_team,selectedTeam
+    global generated_team,selectedTeam, team_df,bestIndices
     selectedTeam = team
-    generated_team = model.prediction_custom_mode(teams,team,isInjured,df,injured_players,isDls)
+    team_df = df
+    generated_team,bestIndices,team_df = model.prediction_custom_mode(teams,team,isInjured,df,injured_players,isDls)
 
     # You can modify this to call your real model logic
     return jsonify({"status": "generated"})
@@ -59,9 +63,15 @@ def send_team():
 def generate_respons():
     data = request.get_json()
     playingxii = data.get("results")
+    prompt = "Name | Batting Style | Bowling Style | Overseas | Batting Score | Bowling Score | Player Role\n"
     print(playingxii)
+    for i in playingxii[1:13]:
+        if "\n" in i:
+            break
+        player_name = i.split(" | ")[0]
+        x = model.get_player(player_name)
+        prompt = prompt + x + "\n"
     stadium = ""
-    prompt = ""
     for i in playingxii:
         if "Ground" in i:
             # Find the start index of the stadium name
@@ -92,5 +102,11 @@ I WANT AN EXPLANATION OF WHY THEY'RE SELECTED USING DETAILS ABOVE. MAKE SURE ITS
 @app.route("/teamName", methods= ["POST"])
 def sendTeamName():
     return jsonify({"result":selectedTeam })
+
+@app.route('/players', methods=['POST'])
+def get_players():
+    data = request.get_json()
+    players = model.get_players_list(team_df,bestIndices)
+    return jsonify({"result": players})
 if __name__ == '__main__':
     app.run(debug=True)

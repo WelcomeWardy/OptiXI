@@ -142,7 +142,7 @@ const Team = () => {
   }}>
                 <div className="custom-left">
                     <div className="custom-title" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}>
-                        Team Mode
+                        Team Mode (Exclusively for 2025)
                         <div className="hint-container">
                             <span
                                 className="icon"
