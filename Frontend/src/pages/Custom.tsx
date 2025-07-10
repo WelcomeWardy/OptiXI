@@ -7,7 +7,7 @@ import './Home.css';
 import './Custom.css';
 import './fonts.css';
 import '../assets/ipl-theme.css';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, type ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -821,7 +821,7 @@ const Custom = () => {
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   const [selectedTeam, setSelectedTeam] = useState<string | null>(null);
   const navigate = useNavigate();
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<ReactNode | null>(null);
 
   const minPlayers = 18;
   const maxPlayers = 25;
@@ -839,7 +839,9 @@ const Custom = () => {
     }
     if (selectedPlayers.length >= maxPlayers) {
       setError(
-        <span style='color:#d32f2f'>You can select a maximum of ${maxPlayers} players.</span>
+        <span style={{ color: '#d32f2f' }}>
+          You can select a maximum of {maxPlayers} players.
+        </span>
       );
       setTimeout(() => setError(null), 1500);
       return;

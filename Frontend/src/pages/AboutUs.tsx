@@ -16,7 +16,7 @@ const AboutUs = () => {
                 <h1 className="aboutus-content-title"><span className="aboutus-emoji" role="img" aria-label="about"></span>About Us</h1>
                 <div className="aboutus-team-vertical fade-in-card" style={{ animationDelay: '0.3s', width: '100%', marginBottom: '1rem' }}>
                     <div className="aboutus-member-row fade-in-card" style={{ animationDelay: '0.5s', marginBottom: '0.7rem' }}>
-                        <img src="/member1.jpg" alt="Member 1" className="aboutus-member-img" />
+                        <img src="../public/Madhav Koduvayur.jpg" alt="Member 1" className="aboutus-member-img" />
                         <div className="aboutus-member-info">
                             <div className="aboutus-member-name">Madhav Koduvayur</div>
                             <div className="aboutus-member-role">Developer</div>
@@ -32,7 +32,7 @@ const AboutUs = () => {
                         </div>
                     </div>
                     <div className="aboutus-member-row fade-in-card" style={{ animationDelay: '0.7s', marginBottom: '0.2rem' }}>
-                        <img src="/public/member2.jpg" alt="Member 2" className="aboutus-member-img" />
+                        <img src="../public/Rahul Ramesh.jpg" alt="Member 2" className="aboutus-member-img" />
                         <div className="aboutus-member-info">
                             <div className="aboutus-member-name">Rahul Ramesh</div>
                             <div className="aboutus-member-role">Developer</div>
