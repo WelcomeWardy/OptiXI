@@ -14,7 +14,7 @@ class Model:
         self.df = pd.read_csv(r"Datasets\18-11_FINAL_DATASET_WITH_STYLES_BOOSTED.csv")
         self.dffull = self.df
         self.present_df = self.df[(self.df["Ending Year"] == "Present") & (self.df["Current Season"] == 0)]
-        genai.configure(api_key="AIzaSyDPzbU5OKeZghLcANqIYoEV_7qHzkbBinM")
+        genai.configure(api_key="##########################")
         self.models = genai.GenerativeModel(model_name="gemma-3n-e4b-it")
         try:
             self.batting_ground_df = pd.read_csv(r"Datasets\batting_stats_by_ground_filtered.csv")
